@@ -51,7 +51,7 @@ export class AuthService {
       }).catch(reject);
     });
   }
-  
+
   loginByEmail(email: string): Promise<firebase.auth.UserCredential> {
     return this.afa.auth.signInWithEmailLink(email, window.location.href);
   }
@@ -87,13 +87,14 @@ export class AuthService {
 
   // Silvino Miranda
   private setUsuario(password?: string) {
-    this.afa.authState.subscribe(user => {
+    this.afa.authState.subscribe(user => {  ///  gkn8ySxUsHVh06TQBSNWtLJYhjl1
       if (user) {
-        this.afb.object<Usuario>(`usuario/${user.uid}`).valueChanges().subscribe(userC => {
-          userC.senha = password;
+        this.afb.object<Usuario>(`usuario/${user.uid}`).valueChanges()
+          .subscribe(userC => {
+            userC.senha = password;
 
-          this.UsuarioAtual = userC;
-        });
+            this.UsuarioAtual = userC;
+          });
       }
     });
   }

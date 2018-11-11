@@ -2,8 +2,8 @@ import { Usuario } from "./models/usuario.modal";
 
 export const configuration = {
   projectName: {
-    firstName: 'BUS',
-    lastName: 'Ticket',
+    firstName: 'CRUD',
+    lastName: 'Padrao',
     minimalName: 'BT'
   },
   localStorageKey: 'PROJECT-NAME-APP',

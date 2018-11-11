@@ -1,0 +1,25 @@
+{
+  "usuario": {
+    "e2tOKHPyeyeE72eIAtnbGHu5fVV2": {
+      "celular": "7988879",
+      "cpf": "878987",
+      "email": "silvino_miranda@hotmail.com",
+      "endereco": {
+        "bairro": "CENTRO",
+        "cidade": "VENTUROSA",
+        "logradouro": "RUA NOVA",
+        "numero": 52,
+        "uf": "PE"
+      },
+      "fantasia": "SILVINO MIRANDA",
+      "fixo": "9798798",
+      "key_empresa": "-LFtq8IvJX4H9uJh_BeH",
+      "nivelacesso": "3",
+      "nome_completo": "SILVINO MIRANDA",
+      "rg": 9798789,
+      "senha": "",
+      "uid": "e2tOKHPyeyeE72eIAtnbGHu5fVV2",
+      "url_foto": "SDFASDFSFSD"
+    }
+  }
+}
