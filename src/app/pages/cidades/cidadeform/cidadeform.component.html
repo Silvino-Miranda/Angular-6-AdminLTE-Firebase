@@ -1,0 +1,50 @@
+<section class="hidden-xs">
+  <ol class="breadcrumb">
+    <li class="">
+      <a [routerLink]="['/']">
+        <i class="fa fa-dashboard"></i> Dashboard</a>
+    </li>
+    <li class="">
+      <a [routerLink]="[urlRoute]">
+        <i class=""></i>{{ 'Cidades' }}</a>
+    </li>
+    <li class="" *ngIf="!EstaAlterando">Adicionando</li>
+    <li class="" *ngIf="EstaAlterando">Alterando</li>
+  </ol>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="box">
+      <div class="box-header">
+        <h2 class="text-center"></h2>
+      </div>
+      <form class="formCrud" [formGroup]="VFormGroup" (ngSubmit)="onFormSubmit()">
+        <div class="box-body">
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+              <div class="col-md-5">
+                <label>Nome da cidade:</label>
+                <input class="form-control text-uppercase" formControlName="nome_cidade">
+              </div>
+              <div class="col-md-4">
+                <label>UF:</label>
+                <select class="form-control text-uppercase" data-live-search="true" formControlName="uf" autocomplete="off">
+                  <option *ngFor="let uf of VUFs" value="{{ uf.sigla }}">{{ uf.nome }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+        </div>
+        <div class="box-footer formCrud_footer">
+          <div class="col-md-1"></div>
+          <button class="btn formCrud-btn done" [disabled]="!VFormGroup.valid" *ngIf="!EstaAlterando">Gravar</button>
+          <button class="btn formCrud-btn done" [disabled]="!VFormGroup.valid" *ngIf="EstaAlterando">Alterar</button>
+          <button class="btn formCrud-btn back" (click)="goBack()">Voltar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

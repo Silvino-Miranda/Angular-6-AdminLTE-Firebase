@@ -1,0 +1,54 @@
+<section class="hidden-xs">
+  <ol class="breadcrumb">
+    <li class="">
+      <a [routerLink]="['/']">
+        <i class="fa fa-dashboard"></i> Dashboard</a>
+    </li>
+    <li class=""><i class=""></i>{{ 'Cidades' }}</li>
+  </ol>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="box">
+      <div class="box-header">
+        <h2 class="text-center text-bold">{{ 'Cidades' }}</h2>
+      </div>
+      <div class="box-body box-footer">
+        <button class="btn btn-flat tableCrud-btnInclude" style="display: inline-block;"
+        type="button" [routerLink]="[urlRoute + '/new']">
+          <i class="fa fa-plus"></i> Nova cidade</button>
+
+        <table class="table table-crud">
+          <tr class="tableCrud_row">
+            <th class="text-left">Cidades</th>
+            <th class="col-md-2">Ações</th>
+          </tr>
+          <tr class="tableCrud_row" *ngFor="let Cidade of allCidade">
+            <td class="text-left">{{ Cidade.nome_cidade + ' - ' + Cidade.uf }}</td>
+            <td>
+              <a class="btn fa fa-pencil tableCrud_row-btn" type="button" (click)="onEdit(Cidade)"></a>
+              <a class="btn fa fa-close tableCrud_row-btn" type="button" (click)="keyToDelete = Cidade.$key;"
+              style="margin-left: 2.5px;" data-toggle="modal" data-target="#modalExcluir"></a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-default fade" style="color: #333;" id="modalExcluir" tabindex="-1" role="dialog" aria-labelledby="modalExcluirLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalExcluirLabel">Realmente deseja excluir?</h5>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-secundary" data-dismiss="modal" (click)="onDelete()">Excluir</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

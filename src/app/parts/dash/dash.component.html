@@ -1,0 +1,150 @@
+<!-- Site wrapper -->
+<div class="wrapper">
+
+  <header class="main-header fixad-top">
+    <!-- Logo -->
+    <a [routerLink]="['/']" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini">
+        <b>{{projectName.minimalName}}</b>
+      </span>
+      <!-- logo for regular state and mobile devices -->
+      <a href="#" class="sidebar-toggle hidden-sm hidden-md hidden-lg" style="padding: 2.5px 10px;color: white !important" data-toggle="push-menu"
+        role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <span class="logo-lg">
+        <b>{{projectName.firstName}}</b> {{projectName.lastName}}</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navb-ar-static-top hidden-xs">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img [src]="userDefault" class="user-image" alt="User Image">
+              <span class="hidden-xs">{{user?.nome_completo}}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img [src]="userDefault" class="img-circle" alt="User Image">
+                <p>
+                  {{ user?.nome_completo }} - {{projectName.firstName}} {{projectName.lastName}}
+                </p>
+
+                <p *ngIf="user.nivelacesso == 1">
+                  Agente
+                </p>
+
+                <p *ngIf="user.nivelacesso == 2" style="color: rgb(255, 0, 0);">
+                  Admin
+                </p>
+
+                <p *ngIf="user.nivelacesso == 3" style="color: rgb(0, 0, 0); font: bold">
+                  SUPER DEVELOPER
+                </p>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <!-- <div class="pull-left">
+                  <a class="btn btn-default btn-flat">Meus dados</a>
+                </div> -->
+                <div class="pull-right">
+                  <a class="btn btn-default btn-flat" [routerLink]="['/logout']">Sair</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- =============================================== -->
+
+  <!-- Left side column. contains the sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+          <li class="header"></li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['/main']">
+            <i class="fa fa-dashboard text-red"></i>
+            <span class="itemTitle">Tela inicial</span>
+          </a>
+        </li>       
+        <li routerLinkActive="active">
+          <a [routerLink]="['/usuario']" *ngIf="isAcLevel(2)">
+            <i class="fa fa-user text-green"></i>
+            <span class="itemTitle">Usuario / Agente</span>
+          </a>
+        </li>       
+        <li routerLinkActive="active">
+          <a [routerLink]="['/cidade']" *ngIf="isAcLevel(2)">
+            <i class="fa fa-circle-o text-green"></i>
+            <span class="itemTitle">Cidades</span>
+          </a>
+        </li>       
+        <li routerLinkActive="active">
+          <a [routerLink]="['/logout']">
+            <i class="fa fa-arrow-left text-success"></i>
+            <span>Sair do Sistema</span>
+          </a>
+        </li>
+        <!--li class="treeview link-pointer" routerLinkActive="active menu-open">
+          <a>
+            <i class="fa fa-circle-o"></i>
+            <span>Item</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="" routerLinkActive="active">
+              <a [routerLink]="['/main']">
+                <i class="fa fa-circle-o"></i> Sub Item</a >
+            </li>
+          </ul>
+        </li-->
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- =============================================== -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+
+  <!-- footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>{{projectName.firstName}}</b> {{projectName.lastName}}
+    </div>
+    <strong>
+      <a href="https://www.pluritech.com.br">
+        Pluritech Brasil</a>.
+    </strong>
+  </footer -->
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>

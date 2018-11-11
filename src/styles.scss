@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+@import '/loading-page';
+
+.section {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.date-placeholder {
+    &:before{
+        content: attr(placeholder) !important;
+        color: #aaa;
+        margin-right: 0.5em;
+    }
+    &:focus:before, &:valid:before {
+        content: "";
+    }
+}
+
+@media (max-width: 990px) {
+  .margin-top-md {
+    margin-top: 6px;
+  }
+}
+
+@media (min-width: 768px) {
+  .scrollable {
+    max-height: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+}
+
+.divider {
+  height: 1px;
+  width:100%;
+  display:block; /* for use on default inline elements like span */
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: darken(#e5e5e5, 20%);
+}
+
+.purple-button,
+.purple-button:hover,
+.purple-button:active,
+.purple-button:visited,
+.purple-button:focus {
+    background-color: #9933ff !important;
+    border-color: #9933ff !important;
+}
+
+.sidebar-menu li>a>.pull-right-container>.fa-angle-left {
+  transition: transform .5s ease;
+}
+
+.ql-container {
+    min-height: 250px;
+    margin-bottom: 20px;
+}
+
+.login-page {
+  background: url("./assets/images/bgbuslogin.jpg") center no-repeat
+}
+
+.login-logo img{
+  width: 100%;
+}

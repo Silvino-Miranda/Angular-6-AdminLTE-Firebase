@@ -1,0 +1,98 @@
+@media (max-width: 767px) {
+    div.row {
+      margin-top: -5em;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    div.row {
+      margin-top: -40px;
+    }
+  }
+  
+  .fixed .content-wrapper {
+    padding-top: 50px;
+  }
+
+  .content {
+    margin-top: 25px;
+  }
+  
+  /* -------- Tabela CRUD -------- */
+  
+  .tableCrud-btnInclude {
+    margin-bottom: 1px;
+    display: inline-block;
+    font-size: 1.2em;
+    color: #fff !important;
+    padding: 6px 18px;
+    border: none;
+    background-color: #415D49;
+  }
+  
+  .tableCrud-btnInclude:hover {
+    background-color: #335642;
+  }
+  
+  .around-table {
+    max-height: 527px;
+    overflow: auto;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .tableCrud {}
+  
+  .tableCrud_row {
+    text-align: center;
+    font-weight: normal;
+    color: #fff;
+    background-color: #42423f;
+  }
+  
+  .tableCrud_row th {
+    font-size: 18px;
+    color: #b4b4b4;
+    line-height: 1.7;
+    background-color: #263A3F;
+  }
+  
+  @media (max-width: 767px) {
+    /* Configuração para celulares */
+    .tableCrud_row:first-child {
+      font-size: 16px;
+    }
+  }
+  
+  .tableCrud_row th {
+    vertical-align: middle;
+    text-align: center;
+    font-weight: 600;
+  }
+  
+  .tableCrud_row th,
+  td {
+    border: 1px hsla(0, 0%, 100%, .15) solid;
+  }
+  
+  .tableCrud_row tbody td {
+    text-transform: capitalize;
+    font-size: 15px;
+    line-height: 1.9;
+  }
+  
+  @media (max-width: 767px) {
+    /* Configuração para celulares */
+    .tableCrud_row tbody td {
+      font-size: 14px;
+    }
+  }
+  
+  .tableCrud_row-btn {
+    color: #ccc !important;
+    background-color: #414949;
+  }
+  
+  .tableCrud_row-btn:hover {
+    background-color: #415249;
+  }

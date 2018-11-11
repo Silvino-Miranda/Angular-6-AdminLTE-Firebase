@@ -1,0 +1,17 @@
+.sidebar-menu .treeview-menu {
+  padding-left: 20px;
+}
+
+.link-pointer {
+  cursor: pointer;
+}
+
+@media (max-width: 768) {
+  .main-sidebar {
+    margin-top: -50px;
+  }
+}
+
+.itemTitle {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
