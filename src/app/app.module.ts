@@ -29,9 +29,9 @@ import { LoginComponent } from './pages/security/login/login.component';
 import { LogoutComponent } from './pages/security/logout/logout.component';
 
 // Angular Modules
-import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './providers/core/core.module';
-import { LoadingComponent } from './components/loading/loading.component';
+import { SharedModule } from './system/shared/shared.module';
+import { LoadingComponent } from './system/components/loading/loading.component';
 
 
 @NgModule({

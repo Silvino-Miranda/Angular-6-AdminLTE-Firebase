@@ -1,8 +1,8 @@
 import { OnInit } from "@angular/core";
 
-import { configuration } from "../configuration";
-import { Usuario } from "../models/usuario.modal";
-import { UF } from "../models/shared/ufs.model";
+import { configuration } from "app/configuration";
+import { Usuario } from "app/models/usuario.modal";
+import { UF } from "app/models/shared/ufs.model";
 
 
 export class PadraoComponent implements OnInit {

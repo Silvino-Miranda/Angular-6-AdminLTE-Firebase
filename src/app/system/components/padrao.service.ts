@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 
-import * as firebase from 'firebase';
 import { AngularFireDatabase, AngularFireList, QueryFn } from "angularfire2/database";
 import { Observable, Observer } from "rxjs";
 import { take } from 'rxjs/Operators';
-import { UF, Ufs } from "../models/shared/ufs.model";
-import { Emissor, Emissores } from "../models/shared/Emissores.model";
+import { UF, Ufs } from "app/models/shared/ufs.model";
+import { Emissor, Emissores } from "app/models/shared/Emissores.model";
+
 
 @Injectable()
 export class PadraoService<T> {

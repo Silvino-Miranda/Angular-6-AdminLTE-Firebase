@@ -7,7 +7,7 @@ import { UsuarioformComponent } from './usuarioform/usuarioform.component';
 
 import { LeaveGuard } from '../../providers/route-guards/leave.guard';
 
-import { SharedModule } from '../../shared/shared.module';
+import { SharedModule } from 'app/system/shared/shared.module';
 
 const ROUTES: Routes = [
     { path: '', component: UsuarioComponent, canActivate: [] },

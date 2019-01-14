@@ -1,13 +1,13 @@
 import { OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
-import { configuration } from "../configuration";
-
 import { ToastrService } from "ngx-toastr";
 
-import { AuthService } from "../providers/services/auth.service";
+import { configuration } from "app/configuration";
 
-import { Usuario } from "../models/usuario.modal";
+import { AuthService } from "app/providers/services/auth.service";
+
+import { Usuario } from "app/models/usuario.modal";
 
 export class PadraoListComponent<T> implements OnInit {
   urlRoute: string;

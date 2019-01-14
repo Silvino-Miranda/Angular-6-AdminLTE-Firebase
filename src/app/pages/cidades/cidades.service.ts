@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from "angularfire2/database";
 
-import { PadraoService } from "../../components/padrao.service";
+import { PadraoService } from "app/system/components/padrao.service";
 import { Cidade } from "../../models/cidade.modal";
 import { DatabaseReference } from "angularfire2/database/interfaces";
 

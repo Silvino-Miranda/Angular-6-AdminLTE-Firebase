@@ -1,9 +1,9 @@
 import { OnInit } from "@angular/core";
 
-import { configuration } from "../configuration";
+import { configuration } from "app/configuration";
 
-import { Usuario } from "../models/usuario.modal";
-import { AuthService } from "../providers/services/auth.service";
+import { Usuario } from "app/models/usuario.modal";
+import { AuthService } from "app/providers/services/auth.service";
 
 export class PadraoFormComponent implements OnInit {
   public urlRoute: string;

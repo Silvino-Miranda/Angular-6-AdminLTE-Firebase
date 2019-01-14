@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../providers/services/auth.service';
 
 import { configuration } from '../../../configuration';
-import { PadraoComponent } from '../../../components/padrao.component';
+import { PadraoComponent } from 'app/system/components/padrao.component';
 import { environment } from 'environments/environment';
 
 export interface ErrorReason {

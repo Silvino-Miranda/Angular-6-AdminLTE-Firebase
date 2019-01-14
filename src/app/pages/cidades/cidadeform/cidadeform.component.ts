@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
-import { PadraoComponent } from '../../../components/padrao.component';
+import { PadraoComponent } from 'app/system/components/padrao.component';
+
 import { UF } from '../../../models/shared/ufs.model';
 import { CidadesService } from '../cidades.service';
 import { AuthService } from '../../../providers/services/auth.service';
