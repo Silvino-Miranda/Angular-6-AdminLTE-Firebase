@@ -1,4 +1,4 @@
-import { Usuario } from "./models/usuario.modal";
+import { Usuario } from "../models/usuario.modal";
 
 export const configuration = {
   projectName: {

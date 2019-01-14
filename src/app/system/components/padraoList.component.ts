@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 
 import { ToastrService } from "ngx-toastr";
 
-import { configuration } from "app/configuration";
+import { configuration } from "app/config/configuration";
 
 import { AuthService } from "app/providers/services/auth.service";
 

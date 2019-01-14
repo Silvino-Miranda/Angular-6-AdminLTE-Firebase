@@ -1,6 +1,6 @@
 import { OnInit } from "@angular/core";
 
-import { configuration } from "app/configuration";
+import { configuration } from "app/config/configuration";
 
 import { Usuario } from "app/models/usuario.modal";
 import { AuthService } from "app/providers/services/auth.service";

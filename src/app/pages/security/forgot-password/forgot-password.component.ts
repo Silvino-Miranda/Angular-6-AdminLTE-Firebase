@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { AuthService } from '../../../providers/services/auth.service';
 
-import { configuration } from '../../../configuration';
+import { configuration } from '../../../config/configuration';
 
 import { ErrorReason } from '../login/login.component';
 

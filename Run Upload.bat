@@ -1,5 +1,5 @@
 git add .
 
-git commit -m "Silvino || Gabriel || Guilherme"
+git commit -m "Silvino"
 
 git push

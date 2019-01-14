@@ -1,4 +1,4 @@
-import { configuration } from '../../configuration';
+import { configuration } from '../../config/configuration';
 
 import { Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
