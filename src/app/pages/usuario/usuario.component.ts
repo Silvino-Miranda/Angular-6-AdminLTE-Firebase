@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 
-import { UserService } from '../../providers/services/user.service';
 
+import { UsuarioService } from './usuario.service';
 import { Usuario } from '../../models/usuario.modal';
 import { AuthService } from '../../providers/services/auth.service';
 
@@ -18,7 +18,7 @@ export class UsuarioComponent implements OnInit {
   LoggedUser: Usuario;
 
   constructor(
-    public userService: UserService,
+    public usuarioService: UsuarioService,
     private auth: AuthService,
     private router: Router
   ) { 
@@ -29,7 +29,7 @@ export class UsuarioComponent implements OnInit {
   }
 
   onEdit(user: Usuario) {
-    this.userService.sUser = user;
+    this.usuarioService.sUser = user;
 
     this.router.navigate(['/usuario/edit']);
   }

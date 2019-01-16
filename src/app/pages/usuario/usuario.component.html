@@ -26,7 +26,7 @@
                 <th class="text-left">Nievel de Acesso</th>
                 <th class="col-md-2">Ações</th>
               </tr>
-              <tr class="tableCrud_row" *ngFor="let user of userService.users | async">
+              <tr class="tableCrud_row" *ngFor="let user of allDados">
                 
                 <td>{{ user.nome_completo }}</td>
                 <td>{{ user.email }}</td>

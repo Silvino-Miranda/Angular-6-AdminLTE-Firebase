@@ -13,7 +13,8 @@ export class PadraoService<T> {
   anyListAll: T[];
   sAny: T;
 
-  constructor(private fb: AngularFireDatabase, public urlRoute: string) {
+  constructor(private fb: AngularFireDatabase,
+	public urlRoute: string) {
     this.anyList = this.fb.list<any>(`${this.urlRoute}`);
   }
 

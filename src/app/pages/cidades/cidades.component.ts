@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
+import { UsuarioService } from '../usuario/usuario.service';
 import { CidadesService } from './cidades.service';
 import { AuthService } from '../../providers/services/auth.service';
-import { UserService } from '../../providers/services/user.service';
 
 import { PadraoComponent } from 'app/system/components/padrao.component';
 import { Cidade } from '../../models/cidade.modal';
@@ -20,7 +20,7 @@ export class CidadesComponent extends PadraoComponent implements OnInit {
   constructor(
     private dbService: CidadesService,
     private auth: AuthService,
-    private user: UserService,
+    private user: UsuarioService,
     public router: Router,
     private toastrService: ToastrService, private Auth: AuthService) {
     super(dbService);

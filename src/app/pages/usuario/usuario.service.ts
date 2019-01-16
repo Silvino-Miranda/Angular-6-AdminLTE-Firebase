@@ -7,7 +7,7 @@ import { Usuario } from '../../models/usuario.modal';
 import { UF, Ufs } from '../../models/shared/ufs.model';
 
 @Injectable()
-export class UserService {
+export class UsuarioService {
   users: Observable<Usuario[]>;
   sUser: Usuario;
 

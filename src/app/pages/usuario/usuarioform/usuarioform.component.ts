@@ -10,8 +10,8 @@ import { PadraoComponent } from 'app/system/components/padrao.component';
 
 import { UF } from '../../../models/shared/ufs.model';
 import { AuthService } from '../../../providers/services/auth.service';
-import { UserService } from '../../../providers/services/user.service';
 
+import { UsuarioService } from '../usuario.service';
 import { Usuario } from '../../../models/usuario.modal';
 
 @Component({
@@ -25,7 +25,7 @@ export class UsuarioformComponent implements OnInit {
   LoggedUser: Usuario;
 
   constructor(
-    public userService: UserService,
+    public usuarioService: UsuarioService,
     public formBuilder: FormBuilder,
     public router: Router,
     private toastrService: ToastrService,
@@ -33,7 +33,7 @@ export class UsuarioformComponent implements OnInit {
   ) {
     this.LoggedUser = this.authService.getUsuario();
 
-    if (typeof this.userService.sUser !== 'undefined') {
+    if (typeof this.usuarioService.sUser !== 'undefined') {
       this.VFormGroup = formBuilder.group({
         nome_completo: ['', [Validators.required]],
         fantasia: ['', [Validators.required]],
@@ -75,10 +75,10 @@ export class UsuarioformComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.VUFs = this.userService.getUFs();
+    this.VUFs = this.usuarioService.getUFs();
 
-    if (typeof this.userService.sUser !== 'undefined') {
-      let sUser: Usuario = this.userService.sUser;
+    if (typeof this.usuarioService.sUser !== 'undefined') {
+      let sUser: Usuario = this.usuarioService.sUser;
 
       this.VFormGroup.setValue({
         nome_completo: sUser.nome_completo,
@@ -110,7 +110,7 @@ export class UsuarioformComponent implements OnInit {
     valorform.endereco.bairro = valorform.endereco.bairro.toUpperCase();
     valorform.endereco.logradouro = valorform.endereco.logradouro.toUpperCase();
 
-    if (typeof this.userService.sUser === 'undefined') {
+    if (typeof this.usuarioService.sUser === 'undefined') {
       this.authService.createAuthUser({ email: valorform.email, password: valorform.senha }).then(authState => {
         valorform.senha = '';
         if (this.authService.getUsuario().key_empresa === 'undefined') {
@@ -120,7 +120,7 @@ export class UsuarioformComponent implements OnInit {
         }
         valorform.uid = authState.user.uid;
 
-        this.userService.create(valorform)
+        this.usuarioService.create(valorform)
           .then(() => {
             this.authService.login({ email: this.LoggedUser.email, password: this.LoggedUser.senha }).then(() => {
               this.goBack();
@@ -130,19 +130,19 @@ export class UsuarioformComponent implements OnInit {
           });
       });
     } else {
-      this.userService.editUser({
+      this.usuarioService.editUser({
         celular: valorform.celular,
         cpf: valorform.cpf,
-        email: this.userService.sUser.email,
-        senha: this.userService.sUser.senha,
+        email: this.usuarioService.sUser.email,
+        senha: this.usuarioService.sUser.senha,
         endereco: valorform.endereco,
         fantasia: valorform.fantasia,
         fixo: valorform.fixo,
-        key_empresa: this.userService.sUser.key_empresa,
+        key_empresa: this.usuarioService.sUser.key_empresa,
         nome_completo: valorform.nome_completo,
         rg: valorform.rg,
         nivelacesso: valorform.nivelacesso,
-        uid: this.userService.sUser.uid,
+        uid: this.usuarioService.sUser.uid,
         url_foto: valorform.url_foto
       }).then(() => {
         this.goBack();
@@ -154,7 +154,7 @@ export class UsuarioformComponent implements OnInit {
 
   goBack() {
     this.VFormGroup.reset();
-    delete this.userService.sUser;
+    delete this.usuarioService.sUser;
     this.router.navigate(['usuario']);
   }
 }

@@ -29,10 +29,12 @@ import { LoginComponent } from './pages/security/login/login.component';
 import { LogoutComponent } from './pages/security/logout/logout.component';
 
 // Angular Modules
+// Services
 import { CoreModule } from './providers/core/core.module';
 import { SharedModule } from './system/shared/shared.module';
 import { LoadingComponent } from './system/components/loading/loading.component';
 
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -45,21 +47,25 @@ import { LoadingComponent } from './system/components/loading/loading.component'
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,   
+    BrowserAnimationsModule,
+    FormsModule,
+    //  HttpClientModule,
     CoreModule,
     SharedModule,
     AngularFireDatabaseModule,
+    ReactiveFormsModule,
+    BootstrapModalModule,
+    FileUploadModule,
+    QuillModule,
     AngularFireModule.initializeApp(environment.firebaseAppConfig),
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
     NgxMaskModule.forRoot(),
     ToastrModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule,
-    BootstrapModalModule,
-    FileUploadModule,
-    QuillModule
     //ChartsModule,
   ],
+  entryComponents: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

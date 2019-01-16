@@ -1,5 +1,3 @@
-import { Usuario } from "../models/usuario.modal";
-
 export const configuration = {
   projectName: {
     firstName: 'CRUD',

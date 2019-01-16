@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-//import { Utils } from '../../../utils/utils';
 
 import { AuthService } from '../../../providers/services/auth.service';
 
