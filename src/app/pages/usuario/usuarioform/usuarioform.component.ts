@@ -10,8 +10,8 @@ import { PadraoComponent } from 'app/system/components/padrao.component';
 
 import { UF } from '../../../models/shared/ufs.model';
 import { AuthService } from '../../../providers/services/auth.service';
-
 import { UsuarioService } from '../usuario.service';
+
 import { Usuario } from '../../../models/usuario.modal';
 
 @Component({
@@ -113,11 +113,11 @@ export class UsuarioformComponent implements OnInit {
     if (typeof this.usuarioService.sUser === 'undefined') {
       this.authService.createAuthUser({ email: valorform.email, password: valorform.senha }).then(authState => {
         valorform.senha = '';
-        if (this.authService.getUsuario().key_empresa === 'undefined') {
-          valorform.key_empresa = '-LFtq8IvJX4H9uJh_BeH';
-        } else {
-          valorform.key_empresa = this.authService.getUsuario().key_empresa;
-        }
+        // if (this.authService.getUsuario().key_empresa === 'undefined') {
+        //   valorform.key_empresa = '-LFtq8IvJX4H9uJh_BeH';
+        // } else {
+        //   valorform.key_empresa = this.authService.getUsuario().key_empresa;
+        // }
         valorform.uid = authState.user.uid;
 
         this.usuarioService.create(valorform)
@@ -137,8 +137,7 @@ export class UsuarioformComponent implements OnInit {
         senha: this.usuarioService.sUser.senha,
         endereco: valorform.endereco,
         fantasia: valorform.fantasia,
-        fixo: valorform.fixo,
-        key_empresa: this.usuarioService.sUser.key_empresa,
+        fixo: valorform.fixo,        
         nome_completo: valorform.nome_completo,
         rg: valorform.rg,
         nivelacesso: valorform.nivelacesso,

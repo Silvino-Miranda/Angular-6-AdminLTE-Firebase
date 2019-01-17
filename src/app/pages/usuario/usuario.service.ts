@@ -5,21 +5,21 @@ import { Observable } from 'rxjs';
 
 import { Usuario } from '../../models/usuario.modal';
 import { UF, Ufs } from '../../models/shared/ufs.model';
+import { PadraoService } from 'app/system/components/padrao.service';
 
 @Injectable()
-export class UsuarioService {
+export class UsuarioService extends PadraoService<Usuario>{
   users: Observable<Usuario[]>;
   sUser: Usuario;
 
-  constructor(
-    private afb: AngularFireDatabase
-  ) {
+  constructor(private afb: AngularFireDatabase) {
+    super(afb, 'usuario', 'Usuario');
     this.users = this.afb.list<Usuario>(`usuario`).valueChanges();
   }
 
-  create(user: Usuario): Promise<void> {
-    return this.afb.object<Usuario>(`usuario/${user.uid}`).set(user);
-  }
+  // create(user: Usuario): Promise<void> {
+  //   return this.afb.object<Usuario>(`usuario/${user.uid}`).set(user);
+  // }
 
   editUser(user: Usuario): Promise<void> {
     return this.afb.object<Usuario>(`usuario/${user.uid}`).set(user);
@@ -45,8 +45,8 @@ export class UsuarioService {
     });
   }
 
-  getUFs(): UF[] {  
-    let VUfs: UF[] = Ufs;     
+  getUFs(): UF[] {
+    let VUfs: UF[] = Ufs;
     return VUfs;
   }
 }

@@ -14,30 +14,23 @@ export class PadraoService<T> {
   sAny: T;
 
   constructor(private fb: AngularFireDatabase,
-	public urlRoute: string) {
+    public urlRoute: string,
+    public pNome_Tabela: string) {
     this.anyList = this.fb.list<any>(`${this.urlRoute}`);
   }
 
-  getUrl(): string {
-    return this.urlRoute;
-  }
-
-  getByKey($key: string): Observable<T> {
-    return this.fb.object<T>(`${this.urlRoute}/${$key}`).valueChanges().pipe(take(1));
-  }
-
-  getRef(pQueryFn: QueryFn) {
-    this.fb.list<any>(`${this.urlRoute}`, pQueryFn);
-  }
-
-  getData(CampoOrderByChild?: string, pValue?: string): Observable<T[]> {
+  getData(CampoOrderByChild?: string, pValue?: string, OrderBy?: string,  OrderBy2?: string): Observable<T[]> {
     if (CampoOrderByChild) {
       this.anyList = this.fb.list<any>(`${this.urlRoute}`,
         ref => ref.orderByChild(CampoOrderByChild).equalTo(pValue));
     } else {
-      this.anyList = this.fb.list<any>(`${this.urlRoute}`);
+      if (OrderBy) {
+        this.anyList = this.fb.list<any>(`${this.urlRoute}`,
+          ref => ref.orderByChild(OrderBy));
+      } else {
+        this.anyList = this.fb.list<any>(`${this.urlRoute}`);
+      }
     }
-
     return Observable.create((observer: Observer<T[]>) => {
       this.anyList.snapshotChanges().subscribe(item => {
         this.anyListAll = [];
@@ -47,7 +40,6 @@ export class PadraoService<T> {
           y["$key"] = element.key;
           this.anyListAll.push(y as T);
         });
-
         observer.next(this.anyListAll);
       });
     })
@@ -71,6 +63,23 @@ export class PadraoService<T> {
   getUFs(): UF[] {
     let VUfs: UF[] = Ufs;
     return VUfs;
+  }
+
+  getByKey($key: string): Observable<T> {
+    return this.fb.object<T>(`${this.urlRoute}/${$key}`).valueChanges().pipe(take(1));
+  }
+
+  getRef(pQueryFn: QueryFn) {
+    this.fb.list<any>(`${this.urlRoute}`, pQueryFn);
+  }
+
+  // Fucoes Extras
+  getUrl(): string {
+    return this.urlRoute;
+  }
+
+  getNome_Tabela(): string {
+    return this.pNome_Tabela;
   }
 
   getEmissores(): Emissor[] {

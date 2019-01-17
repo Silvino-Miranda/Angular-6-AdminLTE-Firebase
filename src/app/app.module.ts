@@ -30,6 +30,7 @@ import { LogoutComponent } from './pages/security/logout/logout.component';
 
 // Angular Modules
 // Services
+// import { HttpClientModule } from '@angular/common'
 import { CoreModule } from './providers/core/core.module';
 import { SharedModule } from './system/shared/shared.module';
 import { LoadingComponent } from './system/components/loading/loading.component';

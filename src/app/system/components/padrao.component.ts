@@ -9,6 +9,7 @@ export class PadraoComponent implements OnInit {
     public urlRoute: string;
     public VUFs: UF[];
     public keyToDelete: string;
+    public Nome_Tabela: string;
     public EstaAlterando: boolean = false;
 
     public UsuarioAtual: Usuario;
@@ -18,8 +19,10 @@ export class PadraoComponent implements OnInit {
 
     constructor(private databaseService?: any) {
         if (databaseService) {
-            this.urlRoute = '/' + this.databaseService.getUrl();
+            this.Nome_Tabela = this.databaseService.getNome_Tabela();
+            this.urlRoute = '/' + this.databaseService.getUrl();            
             this.VUFs = this.databaseService.getUFs();
+
         }
     }
 
