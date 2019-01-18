@@ -11,7 +11,7 @@ export class CidadesService extends PadraoService<Cidade> {
   Raiz: DatabaseReference;
 
   constructor(private firebase: AngularFireDatabase) {
-    super(firebase, 'cidade');
+    super(firebase, 'cidade', 'Cidade');
   }
 
 }
