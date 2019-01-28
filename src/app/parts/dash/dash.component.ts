@@ -24,6 +24,7 @@ export class DashComponent implements OnInit, OnDestroy {
     public auth: AuthService
   ) {
     this.user = this.auth.getUsuario();
+   // console.log(this.user);    
   }
 
   ngOnInit() {

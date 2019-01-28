@@ -7,6 +7,7 @@ import { LogoutComponent } from './pages/security/logout/logout.component';
 
 // Route Guards
 import { LoggedInGuard } from './providers/route-guards/loggedin.guard';
+import { NivelDevGuard } from './providers/route-guards/niveldev.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -16,8 +17,10 @@ export const routes: Routes = [
   { path: '', component: DashComponent, canActivate: [LoggedInGuard],
     children: [
       { path: 'main', component: MainComponent },
-      { path: 'usuario', loadChildren: './pages/usuario/usuario.module#UsuarioModule' },
+      { path: 'usuario', loadChildren: './pages/usuario/usuario.module#UsuarioModule', canActivate: [NivelDevGuard] },
       { path: 'cidade', loadChildren: './pages/cidades/cidades.module#CidadesModule' }
     ]
   }
 ];
+
+// { path: "create", loadChildren:  "./pages/security/create-account/craete-account.module#CreateAccountModule" },

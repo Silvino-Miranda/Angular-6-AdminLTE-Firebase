@@ -1,8 +1,7 @@
-import { Endereco } from "./shared/endereco.model";
+import { Endereco } from './shared/endereco.model';
 
 export class Usuario {
   uid: string;
-  key_empresa: string;
   nome_completo: string;
   fantasia: string;
   cpf: string;

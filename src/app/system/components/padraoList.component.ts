@@ -1,13 +1,13 @@
-import { OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { ToastrService } from "ngx-toastr";
+import { ToastrService } from 'ngx-toastr';
 
-import { configuration } from "app/config/configuration";
+import { configuration } from 'app/config/configuration';
 
-import { AuthService } from "app/providers/services/auth.service";
+import { AuthService } from 'app/providers/services/auth.service';
 
-import { Usuario } from "app/models/usuario.modal";
+import { Usuario } from 'app/models/usuario.modal';
 
 export class PadraoListComponent<T> implements OnInit {
   urlRoute: string;
@@ -28,7 +28,7 @@ export class PadraoListComponent<T> implements OnInit {
   }
 
   ngOnInit() {
-    this.databaseService.getData('key_empresa', this.LoggedUser.key_empresa)
+    this.databaseService.getData('key_usuario', this.LoggedUser.uid)
       .subscribe((vList: T[]) => {
         this.vList = vList;
       });

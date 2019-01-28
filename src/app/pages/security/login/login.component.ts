@@ -20,7 +20,6 @@ export interface ErrorReason {
 })
 export class LoginComponent extends PadraoComponent implements OnInit, OnDestroy {
 
-
   private classes = ['hold-transition', 'login-page'];
   public projectName = configuration.projectName;
 
@@ -60,7 +59,9 @@ export class LoginComponent extends PadraoComponent implements OnInit, OnDestroy
 
   public login(): void {
     this.auth.login(this.loginForm.value).then(() => {
+     // console.log('feito o Login');
       this.router.navigate(['/']);
+     // console.log('navegou para o Desh');   
     }).catch((reason: ErrorReason) => {
       if (reason.code === 'auth/invalid-email' || reason.code === 'auth/user-not-found') {
         this.errorMsg = 'Seu email não está em nenhum usuário, ou está incorreto!';

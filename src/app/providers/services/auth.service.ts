@@ -4,10 +4,6 @@ import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { isNull } from 'util';
-
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/Operators';
 
 import { Usuario } from '../../models/usuario.modal';
 
@@ -19,45 +15,42 @@ export class AuthService {
     private afa: AngularFireAuth,
     private afb: AngularFireDatabase,
     private router: Router
-  ) {
-    this.afa.authState.subscribe(user => {
-      if (user) {
-
-        // Silvino Miranda
-        this.setUsuario();
-
-        return this.afb.object<Usuario>(`usuario/${user.uid}`).valueChanges();
-
-      }
-    });
-  }
-
-  handleLogin() {
-    return this.router.navigate(['/login']);
-  }
-
-  isLoggedIn(): boolean {
-    return typeof this.UsuarioAtual !== 'undefined';
-  }
+  ) { }
 
   login(user: { email: string, password: string }): Promise<firebase.auth.UserCredential> {
     const promise = this.afa.auth.signInWithEmailAndPassword(user.email, user.password);
 
     return new Promise<any>((resolve, reject) => {
-      promise.then(() => {
-        this.setUsuario(user.password);
-
+      promise.then(credential => {
+        this.setUsuario(credential.user.uid);
         resolve();
       }).catch(reject);
     });
   }
 
-  loginByEmail(email: string): Promise<firebase.auth.UserCredential> {
-    return this.afa.auth.signInWithEmailLink(email, window.location.href);
-  }
-
   createAuthUser(user: { email: string, password: string }): Promise<firebase.auth.UserCredential> {
     return this.afa.auth.createUserWithEmailAndPassword(user.email, user.password);
+  }
+
+  sendEmail(pUser: firebase.User) {
+    let user = pUser; // firebase.auth().currentUser;
+
+    user.sendEmailVerification().then(() => {
+      // Email sent.
+    }).catch((error) => {
+      // An error happened.
+    });
+  }
+
+  deleteUser(pUser: firebase.User) {
+    let user = pUser; // firebase.auth().currentUser;
+
+    user.delete().then(() => {
+      // User deleted.
+    }).catch((error) => {
+      console.log(error);
+      // An error happened.
+    });
   }
 
   retrievePassword(userEmail: string) {
@@ -70,6 +63,7 @@ export class AuthService {
     return new Promise<any>((resolve, reject) => {
       promise.then(() => {
         this.UsuarioAtual = undefined;
+        this.router.navigate(['/login']);
 
         resolve();
       }).catch(reject);
@@ -78,24 +72,26 @@ export class AuthService {
 
   // Silvino Miranda
   getUsuario(): Usuario {
-    if (this.UsuarioAtual !== Observable.create()) {
-      return this.UsuarioAtual;
-    } else {
-      console.log('Fazer Login no Sistema');
-    }
+    return this.UsuarioAtual;
   }
 
   // Silvino Miranda
-  private setUsuario(password?: string) {
-    this.afa.authState.subscribe(user => {  ///  gkn8ySxUsHVh06TQBSNWtLJYhjl1
-      if (user) {
-        this.afb.object<Usuario>(`usuario/${user.uid}`).valueChanges()
-          .subscribe(userC => {
-            userC.senha = password;
+  private setUsuario(pUid: string) {
+    if (pUid) {
+      this.afb.object<Usuario>(`usuario/${pUid}`).valueChanges()
+        .subscribe(userC => {
+         // console.log(userC);
+          this.UsuarioAtual = userC;
+        });
+    }
+  }
 
-            this.UsuarioAtual = userC;
-          });
-      }
-    });
+  // Aula de Tarso
+  isLoggedIn(): boolean {
+    return typeof this.UsuarioAtual !== 'undefined';
+  }
+
+  handleLogin() {
+    this.router.navigate(['/login']);
   }
 }

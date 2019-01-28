@@ -25,44 +25,45 @@ import { RouterLinkStubDirective } from './testing/router-link-stub.directive';
 import { InputComponent } from './input/input.component';
 
 @NgModule({
-  imports:      [ 
-  	CommonModule,
-  	FormsModule 
+  imports: [
+    CommonModule,
+    FormsModule
   ],
-  declarations: [ 
-  	KzCepPipe,
-  	KzCpfPipe,
-  	KzCnpjPipe,
+  declarations: [
+    KzCepPipe,
+    KzCpfPipe,
+    KzCnpjPipe,
     KzCpfCnpjPipe,
     KzFonePipe,
-  	KzCpfValidatorDirective,
-  	KzCnpjValidatorDirective, 
+    KzCpfValidatorDirective,
+    KzCnpjValidatorDirective,
     KzCpfCnpjValidatorDirective,
     RouterLinkStubDirective,
     ModalUtilComponent,
-  	KzPaginacaoComponent,
+    KzPaginacaoComponent,
     KzMaskDirective,
     KzMaskCurrencyDirective,
     KzPikadayDirective,
     InputComponent
   ],
-  exports: [ 
-  	KzCepPipe,
-  	KzCpfPipe,
-  	KzCnpjPipe,
+  exports: [
+    KzCepPipe,
+    KzCpfPipe,
+    KzCnpjPipe,
     KzCpfCnpjPipe,
     KzFonePipe,
-  	KzCpfValidatorDirective,
-    KzCnpjValidatorDirective, 
-  	KzCpfCnpjValidatorDirective,
-  	ModalUtilComponent,
-  	KzPaginacaoComponent,
+    KzCpfValidatorDirective,
+    KzCnpjValidatorDirective,
+    KzCpfCnpjValidatorDirective,
+    ModalUtilComponent,
+    KzPaginacaoComponent,
     KzMaskDirective,
     KzMaskCurrencyDirective,
     KzPikadayDirective,
     InputComponent,
-    CommonModule, 
+    CommonModule,
     FormsModule
   ]
 })
-export class SharedModule {}
+export class SharedModule {
+}

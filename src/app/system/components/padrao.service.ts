@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
-import { AngularFireDatabase, AngularFireList, QueryFn } from "angularfire2/database";
-import { Observable, Observer } from "rxjs";
+import { AngularFireDatabase, AngularFireList, QueryFn } from 'angularfire2/database';
+import { Observable, Observer } from 'rxjs';
 import { take } from 'rxjs/Operators';
-import { UF, Ufs } from "app/models/shared/ufs.model";
-import { Emissor, Emissores } from "app/models/shared/Emissores.model";
+import { UF, Ufs } from 'app/models/shared/ufs.model';
+import { Emissor, Emissores } from 'app/models/shared/Emissores.model';
 
 
 @Injectable()
@@ -36,8 +36,8 @@ export class PadraoService<T> {
         this.anyListAll = [];
 
         item.forEach(element => {
-          let y = element.payload.toJSON();
-          y["$key"] = element.key;
+          const y = element.payload.toJSON();
+          y['$key'] = element.key;
           this.anyListAll.push(y as T);
         });
         observer.next(this.anyListAll);
@@ -46,23 +46,18 @@ export class PadraoService<T> {
   }
 
   create(any: T) {
-    delete any["$key"];
+    delete any['$key'];
     return this.anyList.push(any);
   }
 
   update(any: T) {
-    let $key = any["$key"];
-    delete any["$key"];
+    const $key = any['$key'];
+    delete any['$key'];
     return this.anyList.update($key, any);
   }
 
   delete($key: string) {
     return this.anyList.remove($key);
-  }
-
-  getUFs(): UF[] {
-    let VUfs: UF[] = Ufs;
-    return VUfs;
   }
 
   getByKey($key: string): Observable<T> {
@@ -82,8 +77,13 @@ export class PadraoService<T> {
     return this.pNome_Tabela;
   }
 
+  getUFs(): UF[] {
+    const VUfs: UF[] = Ufs;
+    return VUfs;
+  }
+
   getEmissores(): Emissor[] {
-    let VEmissores: Emissor[] = Emissores;
+    const VEmissores: Emissor[] = Emissores;
     return VEmissores;
   }
 }

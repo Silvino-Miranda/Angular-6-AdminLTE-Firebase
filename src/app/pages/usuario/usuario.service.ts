@@ -17,9 +17,9 @@ export class UsuarioService extends PadraoService<Usuario>{
     this.users = this.afb.list<Usuario>(`usuario`).valueChanges();
   }
 
-  // create(user: Usuario): Promise<void> {
-  //   return this.afb.object<Usuario>(`usuario/${user.uid}`).set(user);
-  // }
+  createByUid(user: Usuario): Promise<void> {
+    return this.afb.object<Usuario>(`usuario/${user.uid}`).set(user);
+  }
 
   editUser(user: Usuario): Promise<void> {
     return this.afb.object<Usuario>(`usuario/${user.uid}`).set(user);

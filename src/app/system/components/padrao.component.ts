@@ -1,8 +1,8 @@
-import { OnInit } from "@angular/core";
+import { OnInit } from '@angular/core';
 
-import { configuration } from "app/config/configuration";
-import { Usuario } from "app/models/usuario.modal";
-import { UF } from "app/models/shared/ufs.model";
+import { configuration } from 'app/config/configuration';
+import { Usuario } from 'app/models/usuario.modal';
+import { UF } from 'app/models/shared/ufs.model';
 
 
 export class PadraoComponent implements OnInit {
@@ -10,7 +10,7 @@ export class PadraoComponent implements OnInit {
     public VUFs: UF[];
     public keyToDelete: string;
     public Nome_Tabela: string;
-    public EstaAlterando: boolean = false;
+    public EstaAlterando = false;
 
     public UsuarioAtual: Usuario;
 
@@ -20,14 +20,14 @@ export class PadraoComponent implements OnInit {
     constructor(private databaseService?: any) {
         if (databaseService) {
             this.Nome_Tabela = this.databaseService.getNome_Tabela();
-            this.urlRoute = '/' + this.databaseService.getUrl();            
+            this.urlRoute = '/' + this.databaseService.getUrl();
             this.VUFs = this.databaseService.getUFs();
 
         }
     }
 
     ngOnInit() {
-        
+
     }
 
 }

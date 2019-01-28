@@ -6,7 +6,7 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Outros Módulos
-//import { ChartsModule } from 'ng2-charts/ng2-charts';
+// import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { FileUploadModule } from 'ng2-file-upload/file-upload/file-upload.module';
 import { NgxMaskModule } from 'ngx-mask';
@@ -50,7 +50,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    //  HttpClientModule,
+    // HttpClientModule,
     CoreModule,
     SharedModule,
     AngularFireDatabaseModule,
@@ -63,7 +63,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     NgxMaskModule.forRoot(),
     ToastrModule.forRoot(),
     FormsModule,
-    //ChartsModule,
+    // ChartsModule,
   ],
   entryComponents: [],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],

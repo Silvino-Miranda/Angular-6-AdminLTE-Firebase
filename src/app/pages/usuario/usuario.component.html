@@ -1,48 +1,63 @@
 <section class="hidden-xs">
-    <ol class="breadcrumb">
-      <li class="">
-        <a [routerLink]="['/']">
-          <i class="fa fa-dashboard"></i> Dashboard</a>
-      </li>
-      <li class="">
-        <i class=""></i>{{ 'Usuários' }}</li>
-    </ol>
-  </section>
+  <ol class="breadcrumb">
+    <li class="">
+      <a [routerLink]="['/']">
+        <i class="fa fa-dashboard"></i> Dashboard</a>
+    </li>
+    <li class="">
+      <i class=""></i>{{ 'Usuários' }}</li>
+  </ol>
+</section>
 
-  <section class="content">
-    <div class="row">
-      <div class="box">
-        <div class="box-header">
-          <h2 class="text-center text-bold">{{ 'Usuários' }}</h2>
+<section class="content">
+  <div class="row">
+    <div class="box">
+      <div class="box-header">
+        <h2 class="text-center text-bold">{{ 'Usuários' }}</h2>
+      </div>
+      <div class="box-body box-footer">
+        <button class="btn tableCrud-btnInclude" routerLink="/usuario/new">
+          <i class="fa fa-plus"></i> Novo usuário
+        </button>
+        <table class="table table-crud">
+          <tr class="tableCrud_row">
+            <th class="text-left">Name</th>
+            <th class="text-left">Email</th>
+            <th class="text-left">Nievel de Acesso</th>
+            <th class="col-md-2">Ações</th>
+          </tr>
+          <tr class="tableCrud_row" *ngFor="let user of allUsuario">
+
+            <td>{{ user.nome_completo }}</td>
+            <td>{{ user.email }}</td>
+            <td *ngIf="user.nivelacesso == 1">Agente</td>
+            <td *ngIf="user.nivelacesso == 2">Administrador</td>
+            <td *ngIf="user.nivelacesso == 3">Super Developer</td>
+            <td>
+              <a *ngIf="LoggedUser.nivelacesso >= user.nivelacesso" class="btn fa fa-pencil tableCrud_row-btn" type="button"
+                (click)="onEdit(user);"></a>
+
+              <a *ngIf="LoggedUser.nivelacesso >= 3" class="btn fa fa-close tableCrud_row-btn" type="button" (click)="keyToDelete = user.uid"
+                style="margin-left: 2.5px;" data-toggle="modal" data-target="#modalExcluir"></a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal modal-default fade" style="color: #333;" id="modalExcluir" tabindex="-1" role="dialog"
+    aria-labelledby="modalExcluirLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalExcluirLabel">Realmente deseja excluir?</h5>
         </div>
-        <div class="box-body box-footer">
-          <button class="btn tableCrud-btnInclude" routerLink="/usuario/new">
-            <i class="fa fa-plus"></i> Novo usuário
-          </button>
-          <table class="table table-crud">
-              <tr class="tableCrud_row">                
-                <th class="text-left">Name</th>
-                <th class="text-left">Email</th>
-                <th class="text-left">Nievel de Acesso</th>
-                <th class="col-md-2">Ações</th>
-              </tr>
-              <tr class="tableCrud_row" *ngFor="let user of allUsuario">
-                
-                <td>{{ user.nome_completo }}</td>
-                <td>{{ user.email }}</td>
-                <td *ngIf="user.nivelacesso == 1">Agente</td>
-                <td *ngIf="user.nivelacesso == 2">Administrador</td>
-                <td *ngIf="user.nivelacesso == 3">Super Developer</td>
-                <td>
-                    <a *ngIf="LoggedUser.nivelacesso >= user.nivelacesso" class="btn fa fa-pencil tableCrud_row-btn" type="button" (click)="onEdit(user);"></a>
-                </td>
-              </tr>
-          </table>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-secundary" data-dismiss="modal" (click)="onDelete()">Excluir</button>
         </div>
       </div>
     </div>
-  </section>
-
-  <div class="container">
-
   </div>
+</section>

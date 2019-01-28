@@ -61,11 +61,11 @@
                 <label>Celular:</label>
                 <input class="form-control" kzMask="(99)99999-9999" formControlName="celular" placeholder="(99)99999-9999">
               </div>
-              <div class="col-md-6" *ngIf="!userService.sUser">
+              <div class="col-md-6" *ngIf="!usuarioService.sUser">
                 <label>Email:</label>
                 <input class="form-control" type="email" formControlName="email">
               </div>
-              <div class="col-md-6" *ngIf="!userService.sUser">
+              <div class="col-md-6" *ngIf="!usuarioService.sUser">
                 <label>Senha:</label>
                 <input class="form-control" type="password" formControlName="senha">
               </div>

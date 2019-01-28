@@ -1,0 +1,43 @@
+<div class="login-box">
+  <div class="login-logo">
+    <a [routerLink]="['/']"><b>{{projectName.firstName}}</b> {{projectName.lastName}}</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">
+      Criar uma Conta GRATIS
+    </p>
+
+    <form [formGroup]="createAccountForm" (ngSubmit)="onCreateAccountSubmitButtonClicked()">
+      <div class="form-group has-feedback">
+        <label class="text-secondary">Nome</label>
+        <input class="form-control invalid" type="text" 
+          autocomplete="off" formControlName="nome_completo" placeholder="Nome" autofocus />
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+
+      <div class="form-group has-feedback">
+        <label class="text-secondary">Email</label>
+        <input class="form-control invalid" type="email" inputmode="email" autocomplete="off" formControlName="email" placeholder="Email" autofocus />
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group">
+        <label class="text-secondary">Senha</label>
+        <input class="form-control valid" type="password" autocomplete="off" placeholder="Password" formControlName="password" />
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="form-group">
+        <label class="text-secondary">Confirmar Senha</label>
+        <input class="form-control valid" type="password" autocomplete="off" placeholder="Password" formControlName="confirm_password" />
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <button class="btn btn-success btn-block btn-lg mt-2" type="submit" [disabled]="createAccountForm.invalid">Criar
+        Conta
+      </button>
+    </form>
+    <hr>
+    <p class="mt-3 mb-0 text-white">
+      Você já tem uma conta? <a [routerLink]="['/login']" class="coolbtn coolbtn-dark">Login</a>
+    </p>
+  </div>
+</div>
