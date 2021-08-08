@@ -1,1 +1,0 @@
-ng build --build-optimizer --prod --extract-css=false --base-href /app/busticket/

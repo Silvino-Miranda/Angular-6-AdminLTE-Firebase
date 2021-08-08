@@ -42,7 +42,7 @@ export class CidadeformComponent extends PadraoComponent implements OnInit {
   }
 
   onFormSubmit() {
-    let valorform = this.VFormGroup.value;
+    const valorform = this.VFormGroup.value;
 
     valorform.nome_cidade = valorform.nome_cidade.toUpperCase();
     valorform.uf = valorform.uf.toUpperCase();
@@ -56,7 +56,7 @@ export class CidadeformComponent extends PadraoComponent implements OnInit {
         });
     } else if (this.dbService.sAny) {
       valorform.$key = this.dbService.sAny.$key;
-      valorform.key_empresa = this.dbService.sAny.key_empresa;
+      // valorform.key_empresa = this.dbService.sAny.key_empresa;
 
       this.dbService.update(valorform).then(() => {
         this.goBack();
