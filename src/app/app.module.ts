@@ -59,7 +59,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     FileUploadModule,
     QuillModule,
     AngularFireModule.initializeApp(environment.firebaseAppConfig),
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, relativeLinkResolution: 'legacy' }),
     NgxMaskModule.forRoot(),
     ToastrModule.forRoot(),
     FormsModule,

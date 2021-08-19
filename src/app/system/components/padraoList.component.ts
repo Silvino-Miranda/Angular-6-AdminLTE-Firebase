@@ -1,4 +1,4 @@
-import { OnInit } from '@angular/core';
+import { OnInit, Directive } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
@@ -9,6 +9,7 @@ import { AuthService } from 'app/providers/services/auth.service';
 
 import { Usuario } from 'app/models/usuario.modal';
 
+@Directive()
 export class PadraoListComponent<T> implements OnInit {
   urlRoute: string;
   keyToDelete: string;
